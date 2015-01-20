@@ -27,7 +27,34 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+# Use backbars to setup Backbone boilerplate.
+gem 'backbars'
+
+# Use jasmine to test javascripts
+group :development, :test do
+  gem 'jasmine'
+end
+
+# Use rspec to test the ruby-on-rails.
+group :development do
+  gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
+  gem 'shoulda-matchers', require: false
+end
+
+# Use ffaker to seed fake infos
+gem 'ffaker'
+
+# Adding Awesome Print because why not.  
+gem 'awesome_print'
+
+# For awesome UI!
+gem 'jquery-ui-rails'
+
+# Use HTTParty to make ruby-side API requests.
+gem 'httparty'
 
 # Use unicorn as the app server
 # gem 'unicorn'
