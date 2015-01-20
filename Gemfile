@@ -37,15 +37,8 @@ group :development, :test do
   gem 'jasmine'
 end
 
-# Use rspec to test the ruby-on-rails.
-group :development do
-  gem 'rspec-rails'
-  gem 'rspec-collection_matchers'
-  gem 'shoulda-matchers', require: false
-end
-
-# Use ffaker to seed fake infos
-gem 'ffaker'
+# Gem to setup Rails testsuite boilerplate
+gem 'quicksuite', group: :development
 
 # Adding Awesome Print because why not.  
 gem 'awesome_print'
@@ -65,3 +58,6 @@ gem 'httparty'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+gem "rails-assets-underscore", source: "https://rails-assets.org"
+gem "rails-assets-backbone", source: "https://rails-assets.org"
