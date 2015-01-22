@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Station.destroy_all
+
+csv_text = File.read('db/stops.csv')
+csv = CSV.parse(csv_text, :headers => true)
+set = csv.map do |row|
+  row
+end
+
+set.each do |station|
+	Station.create({
+		stop_id: station["stop_id"],
+		stop_name: station["stop_name"],
+		stop_lon: station["stop_lon"],
+		stop_lat: station["stop_lat"],
+		stop_url: station["stop_url"]
+	})
+end

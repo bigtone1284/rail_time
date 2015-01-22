@@ -40,7 +40,8 @@ class Station < ActiveRecord::Base
   	 	"44",
   	 	"46",
   	 	"49",
-  	 	"51"
+  	 	"51",
+  	 	"622"
   	]
   	harlem = [
   	 	"55",
