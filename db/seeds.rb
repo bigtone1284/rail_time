@@ -1,4 +1,6 @@
 Station.destroy_all
+User.destroy_all
+
 
 csv_text = File.read('db/stops.csv')
 csv = CSV.parse(csv_text, :headers => true)
@@ -15,3 +17,4 @@ set.each do |station|
 		stop_url: station["stop_url"]
 	})
 end
+
