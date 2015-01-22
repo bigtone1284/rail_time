@@ -38,7 +38,9 @@ group :development, :test do
 end
 
 # Gem to setup Rails testsuite boilerplate
-gem 'quicksuite', group: :development
+group :development, :test do
+	gem 'quicksuite'
+end
 
 # Adding Awesome Print because why not.  
 gem 'awesome_print'
