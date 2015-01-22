@@ -56,7 +56,7 @@ describe Station do
 		stop_lat: "40.752998",
 		stop_lon: "-73.977056",
 		stop_url: "http://as0.mta.info/mnr/stations/station_detail.cfm?key=1",
-		line_name: "Haven"
+		line_name: "New Haven"
 	)}
 
 	let(:same_id_2) { nowhere = Station.create(
@@ -65,7 +65,15 @@ describe Station do
 		stop_lat: "40.752998a",
 		stop_lon: "-73.977056a",
 		stop_url: "http://as0.mta.info/mnr/stations/station_detail.cfm?key=1a",
-		line_name: "New Haven"
+		line_name: "New Havena"
+	)}
+
+	let(:no_line_name) { new_location = Station.create(
+		stop_id: "55",
+		stop_name: "Tremont",
+		stop_lat: "40.752998",
+		stop_lon: "-73.977056",
+		stop_url: "http://as0.mta.info/mnr/stations/station_detail.cfm?key=1",
 	)}
 
 	it "saves a valid station" do 
@@ -88,4 +96,9 @@ describe Station do
 		expect(same_id).to be_valid
 		expect(same_id_2).to_not be_valid
 	end
+
+	it "must assign line_name correctly" do
+		expect(no_line_name.line_name).to eq("Harlem")
+	end
+
 end
