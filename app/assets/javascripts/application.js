@@ -27,5 +27,30 @@ var App = {
 	Models: {}, 
 	Collections: {}, 
 	Views: {}, 
-	Routers: {}
+	Routers: {},
+	initialize: function() {
+		console.log('did it †werks¿')
+		this.collection = new App.Collections.Stations();
+		this.stationDropDownView = new App.Views.StationDropDownView({collection: this.collection});
+	}
+
 };
+
+$(function(){
+	// App.router = new App.Routers.Router();
+	// Backbone.history.start();
+	App.initialize();
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
