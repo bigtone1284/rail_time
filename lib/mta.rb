@@ -85,4 +85,15 @@ module MTA
 		station_info(train_filter, stop_id)
 	end
 
+	def self.station_update(stop_id, direction)
+		stop = Station.find_by stop_id: stop_id
+		stops = {"Hudson" => "1", "Harlem" => "2", "New Haven" => "3"}
+		stop_name = stop.line_name
+		current_station_hash(stops[stop_name], direction, stop_id)
+	end
+
+	def self.update(stop_id, direction)
+		
+	end
+
 end

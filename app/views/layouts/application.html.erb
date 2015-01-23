@@ -9,14 +9,31 @@
 <body>
 
 <h2>Choose your rail line</h2>
-
-	<h3 class='line' id='hudson' attr='1'>Hudson</h3>
-	<h3 class='line' id='harlem' attr='2'>Harlem</h3>
-	<h3 class='line' id='new-haven' attr='3'>New Haven</h3>
-
-	<div id='station-dropdown'>
+	<div id='station-list-view'>
 		
+		<h3 class='line' id='hudson' attr='1'>Hudson</h3>
+		<h3 class='line' id='harlem' attr='2'>Harlem</h3>
+		<h3 class='line' id='new-haven' attr='3'>New Haven</h3>
+
+		<div id="station-dropdown">	
+		</div>
+
+		<div id="direction" hidden>
+			<h3 class='direction-choice' id='north'>North</h3>
+			<h3 class='direction-choice' id='south'>South</h3>
+		</div>
+
+		<table id='search-results' hidden>
+			<tr id='station-table-header'></tr>
+			<tr>
+    		<th>Train Number</th>
+    		<th>ETD</th> 
+    		<th>Scheduled Arrival</th>
+    		<th>Updated Arrival</th>
+  		</tr>
+		</table>
 	</div>
+		
 
 </body>
 </html>

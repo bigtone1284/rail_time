@@ -3,11 +3,11 @@ App.Collections.Stations = Backbone.Collection.extend({
   url: '/stations',
   fetchByLineName: function(line) {
   	this.fetch({
-  		url: this.url + '/search',
-  		data: {search: line},
+  		url: this.url + '/filter_by_line',
+  		data: { line: line },
   		reset: true
   	});
-  },
+  }, 
   initialize: function() {
     console.log('New Station Collection');
   }
