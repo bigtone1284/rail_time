@@ -32,6 +32,8 @@ class AlertsController < ApplicationController
     render :home
   end
 
+  def 
+
     private
 
   def alert_params
