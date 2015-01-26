@@ -71,29 +71,36 @@ module MTA
 	end
 
 	def self.station_info(trains, stop_id)
-		train_hash = Hash.new
-		trains.each do |train|
+		trains.map do |train|
 			stop_info = find_stop(train["trip_update"]["stop_time_update"], stop_id)
-			train_hash[train['id']] = stop_info[0]
+			train_time = train["trip_update"]["trip"]["start_time"]
+			trainone = stop_info[0].merge({train_id: train['id']}).merge({train_time: train_time})
 		end
-		train_hash
 	end
 
-	def self.current_station_hash(line_number, direction, stop_id)
+	def self.current_station(line_number, direction, stop_id)
 		trains = direction_filter(line_number, direction)
 		train_filter = trains_stop(trains, stop_id)
-		station_info(train_filter, stop_id)
+		stations = station_info(train_filter, stop_id)
 	end
 
 	def self.station_update(stop_id, direction)
 		stop = Station.find_by stop_id: stop_id
 		stops = {"Hudson" => "1", "Harlem" => "2", "New Haven" => "3"}
 		stop_name = stop.line_name
-		current_station_hash(stops[stop_name], direction, stop_id)
+		formatter(current_station(stops[stop_name], direction, stop_id))
 	end
 
-	def self.update(stop_id, direction)
-		
+	def self.formatter(update_array)
+		update_array.map do |update|
+			{
+				train_id: update[:train_id],
+				etd: update[:train_time].partition(/\d\d/).select(&:present?).join(":"),
+				scheduled_arrival: Time.at(update["departure"]["time"]).strftime('%H:%M'),
+				updated_arrival: Time.at(update["departure"]["time"] + update["departure"]["delay"]).strftime('%H:%M')
+			}
+		end
 	end
+
 
 end

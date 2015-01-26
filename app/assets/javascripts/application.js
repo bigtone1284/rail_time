@@ -41,7 +41,6 @@ $(function(){
 	// App.router = new App.Routers.Router();
 	// Backbone.history.start();
 	App.initialize();
-
 });
 
 

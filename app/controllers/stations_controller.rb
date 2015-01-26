@@ -8,5 +8,6 @@ class StationsController < ApplicationController
 	def updates
 		station_updates = MTA.station_update(params[:id], params[:direction])
 		render json: station_updates
+	end
 
 end
