@@ -8,6 +8,9 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.listenTo(this.collection, 'reset', this.renderUpdates);
 	},
 	renderUpdates: function() {
+		this.$(".update-listing").remove();
+		this.$("#loginDiv").remove();
+		this.$("#createUserDiv").remove();
 		this.$("table").removeAttr('hidden');
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
@@ -34,13 +37,32 @@ App.Views.UpdateView = Backbone.View.extend({
 		}
 	},
 	showLoginModal: function() {
-		// draw up the modals!  then the write the functions!
+		this.$('#login-form').empty();
+		this.$('#create-user').empty();
+		var loginForm = $("<form>");
+		loginForm.append($('<input type="text" name="username" placeholder="Username" >'));
+		loginForm.append($('<input type="text" name="password" placeholder="Password" >'));
+		loginForm.append($('<input type="submit" value="Submit">'));
+		this.$('#login-form').append(loginForm);
+		this.$("modal").removeAttr('hidden');
+	},
+	showNewUserModal: function() {
+		this.$('#login-form').empty();
+		this.$('#create-user').empty();
+		var createUserForm = $("<form>");
+		createUserForm.append($('<input type="text" name="username" placeholder="Username" >'));
+		createUserForm.append($('<input type="text" name="password" placeholder="Password" >'));
+		createUserForm.append($('<input type="text" name="confirm-password" placeholder="Confirm Password" >'));
+		createUserForm.append($('<input type="text" name="confirm-email" placeholder="email" >'));
+		createUserForm.append($('<input type="submit" value="Submit">'));
+		this.$('#create-user').append(createUserForm);
+		this.$("modal").removeAttr('hidden');
 	},
 	events: {
 		'click .station-name': 'chooseStation',
 		'click .direction-choice': 'sendRequest',
-		'click .loginDiv': 'showLoginModal',
-		'click .createUserDiv': 'showNewUserModal'
+		'click #loginDiv': 'showLoginModal',
+		'click #createUserDiv': 'showNewUserModal'
 	},
 	chooseStation: function(event) {
 		this.station = event.target.value
