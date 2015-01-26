@@ -30,17 +30,17 @@ var App = {
 	Routers: {},
 	initialize: function() {
 		console.log('did it †werks¿')
-		this.collection = new App.Collections.Stations();
-		this.stationDropDownView = new App.Views.StationDropDownView({collection: this.collection});
+		this.stations = new App.Collections.Stations();
+		this.stationDropDownView = new App.Views.StationDropDownView({ collection: this.stations });
+		this.updates = new App.Collections.Updates();
+		this.updatesView = new App.Views.UpdateView({ collection: this.updates }); 
 	}
-
 };
 
 $(function(){
 	// App.router = new App.Routers.Router();
 	// Backbone.history.start();
 	App.initialize();
-
 });
 
 

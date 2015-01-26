@@ -1,21 +1,22 @@
 App.Views.StationDropDownView = Backbone.View.extend({
-	el: 'select #stationList',
+	el: '#station-list-view',
 	initialize: function() {
 		console.log("fillling it up the drop down");
+		this.listenTo(this.collection, 'reset', this.render);
 	},
 	render: function() {
+		this.$("#station-dropdown").empty();
 		this.collection.each(this.renderStation, this);
 	},
-	renderStation: function() {
+	renderStation: function(station) {
 		var stationDropDownItem = new App.Views.StationDropDownItemView({ model: station })
 		this.$('#station-dropdown').append(stationDropDownItem.$el);
 	},
 	events: {
 		'click .line' : 'chooseLine'
 	},
-	chooseLine: function() {
-		debugger
-		var line = $this.attr.val()
-		this.stations.fecthByLineName(line)
+	chooseLine: function(event) {
+		var line = event.target.id
+		this.collection.fetchByLineName(line)
 	}
 });

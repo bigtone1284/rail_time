@@ -139,4 +139,11 @@ class Station < ActiveRecord::Base
   	end
   end
 
+  def self.filter_by_line(line)
+    line_name = line.split('-').map do |word|
+      word.capitalize
+    end.join(' ')      
+    self.where(line_name: line_name).order(:stop_name)
+  end
+
 end
