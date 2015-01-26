@@ -4,16 +4,23 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def new
-		@user = User.new
-	end
-
 	def create
-		@user = User.new(user_params)
+		binding.pry
+		@user = User.new(
+			username: params["data"]["username"],
+			password: params["data"]["password"],
+			password_confirmation: params["data"]["password_confirmation"],
+			email_address: params["data"]["email_address"]
+		)
+		binding.pry
 		if @user.save
-			redirect_to @user
+			binding.pry
+			render json: @user.attributes.select{ |k, v| k != :password_digest }
 		else
-			render :new
+			binding.pry
+			render json: @user.errors
+
+			# break.  get the return and DO something with it.  
 		end
 	end
 
@@ -24,7 +31,7 @@ class UsersController < ApplicationController
 		end
 	end
 
-		def update
+	def update
 		@user = User.find(params[:id])
 		if @user != current_user
 			render :home
@@ -48,7 +55,7 @@ class UsersController < ApplicationController
 		end
 	end
 
-		private
+	private
 
 	def user_params
 		params.require(:user).permit(:username, :first_name, :last_name, :password, :password_confirmation, :email_address, :phone_number)
