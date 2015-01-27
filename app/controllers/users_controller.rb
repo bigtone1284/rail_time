@@ -14,13 +14,9 @@ class UsersController < ApplicationController
 		)
 		binding.pry
 		if @user.save
-			binding.pry
 			render json: @user.attributes.select{ |k, v| k != :password_digest }
 		else
-			binding.pry
-			render json: @user.errors
-
-			# break.  get the return and DO something with it.  
+			render json: @user.errors 
 		end
 	end
 
