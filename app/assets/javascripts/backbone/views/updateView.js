@@ -149,12 +149,12 @@ App.Views.UpdateView = Backbone.View.extend({
 			url: '/alerts',
 			data: alert,
 			success: function(data) {
-				alert(Alert Saved!);
+				alert('Alert Saved!');
 				$('input')[0].remove()
 				$('#userSave').remove()
 			},
 			error: function(data) {
-				alert(Alert not saved!);
+				alert('Alert not saved!');
 			}
 		})
 	}

@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	background-image: url("https://i0.wp.com/thenypost.files.wordpress.com/2014/12/metronorth.jpg") ;
+	height: 100%;
+	width: 980px;
+
+}
+
+#container {
+	background: rgba(245,255,250,0.7);
+	height: 90%;
+	width: 95%;
+	display: table;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+#hudson {
+	color: rgb(46,139,87);
+}
+
+#harlem {
+	color: rgb(30,144,255);
+}
+
+#new-haven {
+	color: rgb(255,34,34);
+}
+
+#station-list-view {
+	display: inline-block;
+}
+
+
+
+
+
