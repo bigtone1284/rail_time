@@ -6,7 +6,6 @@ describe User do
 
 	it { is_expected.to validate_uniqueness_of :username }
 	it { is_expected.to validate_uniqueness_of :email_address }
-	it { is_expected.to validate_uniqueness_of :phone_number }
 
 	let(:hari) {new_user = User.create( 
 		username: "superman",

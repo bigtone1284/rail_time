@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :alerts
 	has_secure_password
-	validates_uniqueness_of :username,:email_address, :phone_number
+	validates_uniqueness_of :username,:email_address
 	validates_presence_of :username
 	validate :email_address_validator, :phone_number_validator
 

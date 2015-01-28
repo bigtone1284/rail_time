@@ -5,18 +5,16 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		binding.pry
 		@user = User.new(
 			username: params["data"]["username"],
 			password: params["data"]["password"],
 			password_confirmation: params["data"]["password_confirmation"],
 			email_address: params["data"]["email_address"]
 		)
-		binding.pry
 		if @user.save
 			render json: @user.attributes.select{ |k, v| k != :password_digest }
 		else
-			render json: @user.errors 
+			render json: @user.errors, status: 422
 		end
 	end
 
