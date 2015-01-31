@@ -27,8 +27,11 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	renderSave: function() {
 		if (this.user) {
+			this.$('#login-form').empty();
+			this.$('#create-user').empty();
+			var timeInput = $('<input type="time" name="alert_time">')
 			var saveDiv = $('<div>').attr('id', 'userSave').text('Click to save!')
-			this.$("table").append(saveDiv)
+			this.$("table").append(timeInput).append(saveDiv)
 		} else {
 			var loginDiv = $('<div>').attr('id', 'loginDiv').text('Login to Save Alert!')
 			var createUserDiv = $('<div>').attr('id', 'createUserDiv').text('Create an Account!')
@@ -37,12 +40,14 @@ App.Views.UpdateView = Backbone.View.extend({
 		}
 	},
 	showLoginModal: function() {
+		this.$("#loginDiv").empty();
+		this.$("#createUserDiv").empty();
 		this.$('#login-form').empty();
 		this.$('#create-user').empty();
 		var loginForm = $("<form>");
 		loginForm.append($('<input type="text" name="username" placeholder="Username" >'));
 		loginForm.append($('<input type="password" name="password" placeholder="Password" >'));
-		loginForm.append($('<input type="submit" value="Submit">'));
+		loginForm.append($('<input type="button" value="Submit">'));
 		this.$('#login-form').append(loginForm);
 		this.$("modal").removeAttr('hidden');
 	},
@@ -54,7 +59,7 @@ App.Views.UpdateView = Backbone.View.extend({
 		createUserForm.append($('<input type="password" name="password" placeholder="Password" >'));
 		createUserForm.append($('<input type="password" name="confirm-password" placeholder="Confirm Password" >'));
 		createUserForm.append($('<input type="text" name="confirm-email" placeholder="email" >'));
-		createUserForm.append($('<input type="submit" value="Submit">'));
+		createUserForm.append($('<input type="button" value="Submit">'));
 		this.$('#create-user').append(createUserForm);
 		this.$("modal").removeAttr('hidden');
 	},
@@ -63,8 +68,9 @@ App.Views.UpdateView = Backbone.View.extend({
 		'click .direction-choice': 'sendRequest',
 		'click #loginDiv': 'showLoginModal',
 		'click #createUserDiv': 'showNewUserModal',
-		'click #create-user :submit': 'saveNewUser',
-		'click #login-form :submit': 'loginUser'
+		'click #create-user :button': 'saveNewUser',
+		'click #login-form :button': 'loginUser',
+		'click #userSave': 'saveAlert'
 	},
 	chooseStation: function(event) {
 		this.station = event.target.value
@@ -76,7 +82,6 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.collection.fetchStationUpdates(this.station, this.direction);
 	},
 	saveNewUser: function() {
-		debugger
 		var userName = $($('#create-user input')[0]).val();
 		var password = $($('#create-user input')[1]).val();
 		var passwordConfirmation = $($('#create-user input')[2]).val()
@@ -93,9 +98,64 @@ App.Views.UpdateView = Backbone.View.extend({
 			url: '/users',
 			data: newUser,
 			success: function(data) {
+				alert('New Profile Successfully made!');
+				App.updatesView.showLoginModal();
+			},
+			error: function(data) {
+				//use return errors to make a better alert.
+				alert('Error! -- Please Try Again!');
+				App.updatesView.showNewUserModal();
+			}
+		})
+	},
+	loginUser: function() {
+		var userName = $($('#login-form input')[0]).val();
+		var password = $($('#login-form input')[1]).val();
+		var loginInfo = { data: {
+			username: userName,
+			password: password
+			}
+		};
+		$.ajax({
+			type: 'POST',
+			url: '/sessions',
+			data: loginInfo,
+			success: function(data) {
+				alert('Login Succesful');
+				App.updatesView.user = data.id
+				App.updatesView.renderSave()
+			},
+			error: function(data) {
+				alert('Login Failed -- Please Try Again.')
+				App.updatesView.showLoginModal();
+			}
 
+		})
+	},
+	saveAlert: function() {
+		var station = App.stations.where({stop_id: this.station})[0].get("id");
+		var direction = this.direction;
+		var user = this.user;
+		var time = $('input').val();
+		var alert = { data : {
+			station: station,
+			direction: direction,
+			user: user,
+			time: time
+			}
+		};
+		$.ajax({
+			type: 'POST',
+			url: '/alerts',
+			data: alert,
+			success: function(data) {
+				alert('Alert Saved!');
+				$('input')[0].remove()
+				$('#userSave').remove()
+			},
+			error: function(data) {
+				alert('Alert not saved!');
 			}
 		})
 	}
-
 });

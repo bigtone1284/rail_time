@@ -9,11 +9,16 @@ class AlertsController < ApplicationController
   end
 
   def create
-    @alert = Alert.new(alert_params)
-    if @location.save
-    	redirect_to @alert
+    @alert = Alert.new(
+      user_id: params["data"]["user"].to_i,
+      direction: params["data"]["direction"],
+      station_id: params["data"]["station"].to_i,
+      time: Time.parse(params["data"]["time"])
+    )
+    if @alert.save
+      render json: @alert.attributes
     else
-    	render :new
+      render json: @alert.errors, status: 422
     end
   end
 
@@ -32,9 +37,7 @@ class AlertsController < ApplicationController
     render :home
   end
 
-  def 
-
-    private
+  private
 
   def alert_params
   	params.require(:alert).permit(:station_name, :direction, :time)

@@ -51,6 +51,9 @@ gem 'jquery-ui-rails'
 # Use HTTParty to make ruby-side API requests.
 gem 'httparty'
 
+# To send out emails, action mailer
+gem 'actionmailer', '~> 4.1.7'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
