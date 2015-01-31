@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128011619) do
+ActiveRecord::Schema.define(version: 20150131213719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "citext"
 
   create_table "alerts", force: true do |t|
     t.string   "station_name"
@@ -24,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150128011619) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "station_id"
-    t.integer  "user_id"
+    t.text     "email_address"
   end
 
   create_table "stations", force: true do |t|
@@ -34,17 +35,6 @@ ActiveRecord::Schema.define(version: 20150128011619) do
     t.string "stop_lon"
     t.string "stop_url"
     t.string "line_name"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email_address"
-    t.string   "phone_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
 end
