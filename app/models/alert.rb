@@ -1,6 +1,5 @@
 class Alert < ActiveRecord::Base
 	belongs_to :station
-	validates_uniqueness_of :email_address
 	validates_presence_of :email_address
 	validate :email_address_validator
 
