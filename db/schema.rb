@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150201221256) do
+ActiveRecord::Schema.define(version: 20150202232829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "citext"
 
   create_table "alerts", force: true do |t|
-    t.string   "station_name"
     t.string   "direction"
     t.string   "frequency"
     t.datetime "created_at"
