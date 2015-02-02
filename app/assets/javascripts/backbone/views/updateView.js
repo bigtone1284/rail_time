@@ -22,8 +22,8 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	events: {
 		'click .station-name': 'chooseStation',
-		'click .direction-choice': 'sendRequest',
-		'click'  something --- saveAlertadfda
+		'click .direction-choice': 'sendRequest'
+		// 'click'
 	},
 	chooseStation: function(event) {
 		this.station = event.target.value
@@ -35,6 +35,6 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.collection.fetchStationUpdates(this.station, this.direction);
 	},
 	saveAlert: function() {
-		make the save happen!
+		// make the save happen!
 	}
 });
