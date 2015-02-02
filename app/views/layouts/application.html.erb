@@ -9,38 +9,38 @@
 <body>
 	<div id='container'>
 	<h2>Choose your rail line</h2>
-	<div id='station-list-view'>
-		
-		<h3 class='line' id='hudson' attr='1'>Hudson</h3>
-		<h3 class='line' id='harlem' attr='2'>Harlem</h3>
-		<h3 class='line' id='new-haven' attr='3'>New Haven</h3>
+		<div id='station-list-view'>
+			
+			<h3 class='line' id='hudson' attr='1'>Hudson</h3>
+			<h3 class='line' id='harlem' attr='2'>Harlem</h3>
+			<h3 class='line' id='new-haven' attr='3'>New Haven</h3>
 
-		<div id="station-dropdown">	
-		</div>
-
-		<div id="direction" hidden>
-			<h3 class='direction-choice' id='north'>North</h3>
-			<h3 class='direction-choice' id='south'>South</h3>
-		</div>
-
-		<table hidden>
-			<tr id='station-table-header'></tr>
-			<tr>
-    		<th>Train Number</th>
-    		<th>ETD</th> 
-    		<th>Scheduled Arrival</th>
-    		<th>Updated Arrival</th>
-  		</tr>
-		</table>
-		<modal id='user' hidden>
-			<div id='login-form'>
+			<div id="station-dropdown">	
 			</div>
-			<div id='create-user'>
-			</div>
-		</modal>
 
-	</div>
-		
+			<div id="direction" hidden>
+				<h3 class='direction-choice' id='north'>North</h3>
+				<h3 class='direction-choice' id='south'>South</h3>
+			</div>
+			<modal hidden>
+				<table>
+					<tr id='station-table-header'></tr>
+					<tr>
+		    		<th>Train Number</th>
+		    		<th>ETD</th> 
+		    		<th>Scheduled Arrival</th>
+		    		<th>Updated Arrival</th>
+		  		</tr>
+				</table>
+				<div id='save-alert'>
+					<form>
+						Save Time for future Alerts!: <input type="time" name="usr_time" placeholder="hrs:mins">
+						Email: <input type="text" name='usremail' placeholder='you@example.com'><br>
+						<span id='save-alert-click'>Save Alert</span>
+					</form>
+				</div>
+			</modal>
+		</div>
 	</div>
 </body>
 </html>
