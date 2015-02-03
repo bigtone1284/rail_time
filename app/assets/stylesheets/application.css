@@ -136,5 +136,32 @@ body {
 	transform: scale(1.2);
 }
 
+modal {
+	z-index: 9999999;
+	position: absolute;
+	margin: 0 auto;
+	background-color: white;
+	box-shadow: 0 0 0em 100em rgba(112,128,144, 0.8);
+	border-radius: .09em;
+	padding: 1em;
+}
 
+th {
+	padding: 0.25em;
+}
+
+td {
+	padding: 0.25em;
+	margin: 0 auto;
+}
+
+#save-alert-click {
+	border-bottom: solid black;
+	overflow: auto;
+	float: left;
+}
+
+#save-alert-click:hover {
+	transform: scale(1.1);
+}
 

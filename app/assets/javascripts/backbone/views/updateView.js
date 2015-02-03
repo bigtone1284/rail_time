@@ -8,6 +8,7 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	renderUpdates: function() {
 		this.$('modal').removeAttr('hidden')
+		
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
 	},
@@ -49,7 +50,7 @@ App.Views.UpdateView = Backbone.View.extend({
 		  data: newAlert,
 		  success: function(data) {
 		  	alert("Saved!");
-		  	// perhaps reset the window here
+		  	$('modal').addAttr('hidden');
 		  },
 		  error: function(data) {
 		  	debugger
