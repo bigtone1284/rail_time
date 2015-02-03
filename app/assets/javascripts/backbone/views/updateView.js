@@ -34,17 +34,26 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	saveAlert: function() {
 		var stop = App.stations.findWhere({stop_id: this.station}).id;
-		var email = $('input[type=text]').val();
+		var email_address = $('input[type=text]').val();
 		var time = $('input[type=time]').val();
 		var alert = {
-			
-		}
+			email_address: email_address,
+			stop: stop,
+			time: time,
+			direction: this.direction
+		};
 		$.ajax({
 		  type: "POST",
-		  url: url,
-		  data: data,
-		  success: success,
-		  dataType: dataType
+		  url: '/alerts',
+		  data: alert,
+		  success: function(data) {
+		  	debugger
+		  	alert("Saved!")
+		  },
+		  error: function(data) {
+		  	debugger
+		  	alert("fail")
+		  }
 		});
-	};
+	}
 });

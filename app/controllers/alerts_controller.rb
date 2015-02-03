@@ -4,16 +4,12 @@ class AlertsController < ApplicationController
 		@alert = Alert.find(params[:id])
 	end
 
-	def new
-    @alert = Alert.new
-  end
-
   def create
     @alert = Alert.new(
-      user_id: params["data"]["user"].to_i,
-      direction: params["data"]["direction"],
-      station_id: params["data"]["station"].to_i,
-      time: Time.parse(params["data"]["time"])
+      email_address: params["email_address"],
+      direction: params["direction"],
+      station_id: params["stop"].to_i,
+      time: Time.parse(params["time"]).utc
     )
     if @alert.save
       render json: @alert.attributes
