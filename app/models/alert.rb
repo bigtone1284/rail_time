@@ -1,6 +1,6 @@
 class Alert < ActiveRecord::Base
 	belongs_to :station
-	validates_presence_of :email_address
+	validates_presence_of :email_address, :time, :station_id, :direction
 	validate :email_address_validator
 
 	def email_address_validator
