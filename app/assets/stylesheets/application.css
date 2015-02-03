@@ -18,6 +18,9 @@ body {
 	background-image: url("https://i0.wp.com/thenypost.files.wordpress.com/2014/12/metronorth.jpg") ;
 	height: 100%;
 	width: 980px;
+	font-family: Helvetica;
+	font-style: italic;
+	font-weight: bold;
 
 }
 
@@ -31,22 +34,107 @@ body {
 }
 
 #hudson {
-	color: rgb(46,139,87);
+	color: #009B3A;
+	background: white;
+	border-bottom: solid;
+	border-color: #009B3A;
+	border-width: 0.25em;
+	border-radius: 0.1em;
 }
 
 #harlem {
-	color: rgb(30,144,255);
+	color: #0039A6;
+	background: white;
+	border-bottom: solid;
+	border-color: #0039A6;
+	border-width: 0.25em;
+	border-radius: 0.1em;
 }
 
 #new-haven {
-	color: rgb(255,34,34);
+	color: #EE0034;
+	background: white;
+	border-bottom: solid;
+	border-color: #EE0034;
+	border-width: 0.25em;
+	border-radius: 0.1em;
 }
 
 #station-list-view {
 	display: inline-block;
+	float: left;
+	width: 75%;
 }
 
+#station-dropdown {
+	display: inline-block;
+	float: left;
+	margin: 2.5% 5%;
+	padding: 0.25em;
+	max-height: 300px;
+	overflow: scroll;
+}
 
+#line-names {
+	float: left;
+	margin-right: 10%;
+}
+
+.line {
+	padding: 5% 5%;
+	margin: 5%;
+	font-size: 2.25em;
+	width: 100%;
+}
+
+.line:hover {
+	transform: scale(1.1);
+}
+
+#station-dropdown.hudson .station-name {
+	color: #009B3A;
+	border-bottom: solid;
+	border-color: #009B3A;
+}
+
+#station-dropdown.harlem .station-name {
+	color: #0039A6;
+	border-bottom: solid;
+	border-color: #0039A6;
+}
+
+#station-dropdown.new-haven .station-name {
+	color: #EE0034;
+	border-bottom: solid;
+	border-color: #EE0034;
+}
+
+.station-name {
+	padding: 0.2em;
+	margin-top: 0.2em;
+	background: white;
+	border-radius: 0.1em;
+}
+
+.station-name:hover {
+	transform: scale(1.05);
+}
+
+.direction-choice {
+	background-color: white;
+	border-bottom: solid;
+	border-color: black;
+	border-width: 0.25em;
+	border-radius: 0.1em;
+	width: 25%;
+	float: left;
+	margin-top: 0.2em;
+	padding: 0.2em;
+}
+
+.direction-choice:hover {
+	transform: scale(1.2);
+}
 
 
 

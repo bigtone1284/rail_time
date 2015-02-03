@@ -6,6 +6,7 @@ App.Views.StationDropDownView = Backbone.View.extend({
 	},
 	render: function() {
 		this.$("#station-dropdown").empty();
+		$("<h2>2. Choose a Station</h2>").insertAfter('h2')
 		this.collection.each(this.renderStation, this);
 	},
 	renderStation: function(station) {
@@ -18,5 +19,7 @@ App.Views.StationDropDownView = Backbone.View.extend({
 	chooseLine: function(event) {
 		var line = event.target.id
 		this.collection.fetchByLineName(line)
+		$("#station-dropdown").removeClass()
+		$("#station-dropdown").addClass(line)
 	}
 });

@@ -25,6 +25,7 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	chooseStation: function(event) {
 		this.station = event.target.value
+		$("<h2>3. Choose Direction</h2>").insertAfter("h2:last")
 		$('#direction').removeAttr('hidden');
 	},
 	sendRequest: function(event) {
