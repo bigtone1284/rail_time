@@ -10,8 +10,6 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.$('modal').removeAttr('hidden')
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
-		// add a button to save and log in, make a click event
-		// send direction, station_id, time
 	},
 	renderUpdate: function(update) {
 		var updateListing = new App.Views.UpdateListingView({ model: update });
@@ -22,8 +20,8 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	events: {
 		'click .station-name': 'chooseStation',
-		'click .direction-choice': 'sendRequest'
-		// 'click'
+		'click .direction-choice': 'sendRequest',
+		'click #save-alert-click': 'saveAlert'
 	},
 	chooseStation: function(event) {
 		this.station = event.target.value
@@ -35,6 +33,18 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.collection.fetchStationUpdates(this.station, this.direction);
 	},
 	saveAlert: function() {
-		// make the save happen!
-	}
+		var stop = App.stations.findWhere({stop_id: this.station}).id;
+		var email = $('input[type=text]').val();
+		var time = $('input[type=time]').val();
+		var alert = {
+			
+		}
+		$.ajax({
+		  type: "POST",
+		  url: url,
+		  data: data,
+		  success: success,
+		  dataType: dataType
+		});
+	};
 });
