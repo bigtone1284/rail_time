@@ -36,7 +36,7 @@ App.Views.UpdateView = Backbone.View.extend({
 		var stop = App.stations.findWhere({stop_id: this.station}).id;
 		var email_address = $('input[type=text]').val();
 		var time = $('input[type=time]').val();
-		var alert = {
+		var newAlert = {
 			email_address: email_address,
 			stop: stop,
 			time: time,
@@ -45,15 +45,16 @@ App.Views.UpdateView = Backbone.View.extend({
 		$.ajax({
 		  type: "POST",
 		  url: '/alerts',
-		  data: alert,
+		  data: newAlert,
 		  success: function(data) {
-		  	debugger
-		  	alert("Saved!")
+		  	alert("Saved!");
+		  	// perhaps reset the window here
 		  },
 		  error: function(data) {
 		  	debugger
-		  	alert("fail")
+		  	alert("fail");
+		  	// write an alert with a better fail using data.responseText
 		  }
-		});
+		})
 	}
 });
