@@ -46,5 +46,5 @@ App.Views.UpdateView = Backbone.View.extend({
 		  success: success,
 		  dataType: dataType
 		});
-	}
+	};
 });
