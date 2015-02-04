@@ -142,7 +142,7 @@ modal {
 	margin: 0 auto;
 	background-color: white;
 	box-shadow: 0 0 0em 100em rgba(112,128,144, 0.8);
-	border-radius: .09em;
+	border-radius: .25em;
 	padding: 1em;
 }
 
@@ -162,6 +162,16 @@ td {
 }
 
 #save-alert-click:hover {
+	transform: scale(1.1);
+}
+
+#exit-modal {
+	border-bottom: solid black;
+	overflow: auto;
+	float: right;
+}
+
+#exit-modal:hover {
 	transform: scale(1.1);
 }
 

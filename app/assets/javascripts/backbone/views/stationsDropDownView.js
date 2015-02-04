@@ -6,7 +6,9 @@ App.Views.StationDropDownView = Backbone.View.extend({
 	},
 	render: function() {
 		this.$("#station-dropdown").empty();
-		$("<h2>2. Choose a Station</h2>").insertAfter('h2')
+		$("#choose-station").remove();
+		$("#choose-direction").remove();
+		$("<h2 id='choose-station'>2. Choose a Station</h2>").insertAfter('h2')
 		this.collection.each(this.renderStation, this);
 	},
 	renderStation: function(station) {
