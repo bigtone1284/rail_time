@@ -1,5 +1,4 @@
 Station.destroy_all
-User.destroy_all
 
 
 csv_text = File.read('db/stops.csv')
