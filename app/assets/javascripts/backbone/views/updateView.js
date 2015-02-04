@@ -8,6 +8,7 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	renderUpdates: function() {
 		this.$('modal').removeAttr('hidden')
+
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
 	},
@@ -21,16 +22,22 @@ App.Views.UpdateView = Backbone.View.extend({
 	events: {
 		'click .station-name': 'chooseStation',
 		'click .direction-choice': 'sendRequest',
-		'click #save-alert-click': 'saveAlert'
+		'click #save-alert-click': 'saveAlert',
+		'click #exit-modal': 'exitModal'
 	},
 	chooseStation: function(event) {
-		this.station = event.target.value
+		this.station = event.target.value;
+		$("#choose-direction").remove();
+		$("<h2 id='choose-direction'>3. Choose Direction</h2>").insertAfter("h2:last")
 		$('#direction').removeAttr('hidden');
 	},
 	sendRequest: function(event) {
 		this.$(".update-listing").remove()
 		this.direction = event.target.id
 		this.collection.fetchStationUpdates(this.station, this.direction);
+	},
+	exitModal: function() {
+		$('modal').toggle('hidden');
 	},
 	saveAlert: function() {
 		var stop = App.stations.findWhere({stop_id: this.station}).id;
@@ -48,10 +55,9 @@ App.Views.UpdateView = Backbone.View.extend({
 		  data: newAlert,
 		  success: function(data) {
 		  	alert("Saved!");
-		  	// perhaps reset the window here
+		  	$('modal').toggle('hidden');
 		  },
 		  error: function(data) {
-		  	debugger
 		  	alert("fail");
 		  	// write an alert with a better fail using data.responseText
 		  }

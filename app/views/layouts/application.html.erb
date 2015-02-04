@@ -8,14 +8,14 @@
 </head>
 <body>
 	<div id='container'>
-	<h2>Choose your rail line</h2>
 		<div id='station-list-view'>
-			
-			<h3 class='line' id='hudson' attr='1'>Hudson</h3>
-			<h3 class='line' id='harlem' attr='2'>Harlem</h3>
-			<h3 class='line' id='new-haven' attr='3'>New Haven</h3>
-
-			<div id="station-dropdown">	
+			<h2>1. Choose your rail line</h2>
+			<div id="line-names">
+				<h3 class='line' id='hudson' attr='1'>Hudson</h3>
+				<h3 class='line' id='harlem' attr='2'>Harlem</h3>
+				<h3 class='line' id='new-haven' attr='3'>New Haven</h3>
+			</div>
+			<div id="station-dropdown">
 			</div>
 
 			<div id="direction" hidden>
@@ -34,9 +34,10 @@
 				</table>
 				<div id='save-alert'>
 					<form>
-						Save Time for future Alerts!: <input type="time" name="usr_time" placeholder="hrs:mins">
+						Save Time for Future Alerts!: <input type="time" name="usr_time" placeholder="hrs:mins">
 						Email: <input type="text" name='usremail' placeholder='you@example.com'><br>
-						<span id='save-alert-click'>Save Alert</span>
+						<div id='save-alert-click'>Save Alert</div>
+						<div id='exit-modal'>Close</div>
 					</form>
 				</div>
 			</modal>
