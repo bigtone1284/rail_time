@@ -4,8 +4,8 @@ class CreateAlerts < ActiveRecord::Migration
     	t.string :direction
     	t.time 	 :time
     	t.string :frequency
-    	t.reference :station
-    	t.reference :user
+    	t.references :station
+    	t.references :user
 
     	t.timestamps
     end
