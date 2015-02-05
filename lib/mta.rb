@@ -5,9 +5,7 @@ module MTA
 		headers = { 'Accept' => 'application/x-protobuf' }
 		trains = HTTParty.get(address, :options => {'headers' => headers})
 		trains["entity"].select do |train| 
-			if train["trip_update"]["trip"]["route_id"] == line_number
-				train
-			end		
+			train["trip_update"]["trip"]["route_id"] == line_number	
 		end	
 	end
 
@@ -17,29 +15,21 @@ module MTA
 		if direction == 'north'
 			if line_number == 3
 				trains_set.select do |train| 
-					if train["id"].to_i.even?
-						train
-					end
+					train["id"].to_i.even?
 				end
 			elsif line_number == 1 || line_number == 2
 				trains_set.select do |train| 
-					if train["id"].to_i.odd?
-						train
-					end
+					train["id"].to_i.odd?
 				end
 			end
 		elsif direction == 'south'
 			if line_number == 3
 				trains_set.select do |train| 
-					if train["id"].to_i.odd?
-						train
-					end
+					train["id"].to_i.odd?
 				end
 			elsif line_number == 1 || line_number == 2
 				trains_set.select do |train| 
-					if train["id"].to_i.even?
-						train
-					end
+					train["id"].to_i.even?
 				end
 			end
 		end
@@ -56,17 +46,13 @@ module MTA
 
 	def self.trains_stop(trains, stop_id)
 		trains.select do |train|
-			if stop_on_train?(train, stop_id)
-				train
-			end
+			stop_on_train?(train, stop_id)
 		end
 	end
 
 	def self.find_stop(stop_listing, stop_id)
 		stop_listing.select do |stop|
-			if stop["stop_id"] == stop_id
-				stop
-			end
+			stop["stop_id"] == stop_id
 		end
 	end
 
@@ -101,6 +87,4 @@ module MTA
 			}
 		end
 	end
-
-
 end
