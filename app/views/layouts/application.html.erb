@@ -5,6 +5,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <% if flash[:destroy] %>
+    <% content_for :head do %>
+        <script type="text/javascript">
+            document.observe('dom:loaded', function() {
+                alert("<%= flash[:destroy] %>");
+            });
+        </script>
+    <% end %>
+<% end %>
 </head>
 <body>
 	<div id='container'>

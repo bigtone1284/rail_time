@@ -1,9 +1,5 @@
 class AlertsController < ApplicationController
 
-	def show
-		@alert = Alert.find(params[:id])
-	end
-
   def create
     @alert = Alert.new(
       email_address: params["email_address"],
@@ -18,18 +14,10 @@ class AlertsController < ApplicationController
     end
   end
 
-  def edit
-    @alert = Alert.find(params[:id])
-  end
-
-  def update
-    @alert = Alert.find(params[:id])
-    redirect_to @alert
-  end
-
   def destroy
     @alert = alert.find(params[:id])
     @alert.destroy
+    flash[:destroy] = "Alert successfully destroyed.  Feel free to schedule a new alert!"
     render :home
   end
 
