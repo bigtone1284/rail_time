@@ -5,7 +5,6 @@ namespace :send_alerts do
 		Alert.all.each do |alert|
 			if alert.time.strftime("%H%M") == time
 				AlertMailer.alert_email(alert).deliver
-				puts "mailer sent"
 			end
 		end
 	end
