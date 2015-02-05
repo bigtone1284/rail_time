@@ -5,7 +5,7 @@ class AlertsController < ApplicationController
       email_address: params["email_address"],
       direction: params["direction"],
       station_id: params["stop"].to_i,
-      time: Time.parse(params["time"]).in_time_zone("Eastern Time (US & Canada)").utc
+      time: Time.parse(params["time"])
     )
     if @alert.save
       render json: @alert.attributes
