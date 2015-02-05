@@ -24,14 +24,6 @@ class AlertsController < ApplicationController
     redirect_to root_path
   end
 
-
-  def destroy
-    @alert = alert.find(params[:id])
-    @alert.destroy
-    flash[:destroy] = "Alert successfully destroyed.  Feel free to schedule a new alert!"
-    render :home
-  end
-
   private
 
   def alert_params
