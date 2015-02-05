@@ -96,8 +96,8 @@ module MTA
 			{
 				train_id: update[:train_id],
 				etd: update[:train_time].partition(/\d\d/).select(&:present?).join(":"),
-				scheduled_arrival: Time.at(update["departure"]["time"]).strftime('%H:%M'),
-				updated_arrival: Time.at(update["departure"]["time"] + update["departure"]["delay"]).strftime('%H:%M')
+				scheduled_arrival: Time.at(update["departure"]["time"]).strftime('%l:%M %p'),
+				updated_arrival: Time.at(update["departure"]["time"] + update["departure"]["delay"]).strftime('%l:%M %p')
 			}
 		end
 	end

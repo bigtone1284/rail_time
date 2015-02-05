@@ -7,7 +7,7 @@
 <body>
 	<h2> Greetings from RailTime,</h2>
 	<p>
-		Here are your <%= @alert.time %> alert updates for MTA Metro-North Travel, going <%= @alert.direction %>, arriving at <%= @alert.station.stop_name %>.   
+		Here are your <%= @alert.time.in_time_zone("Eastern Time (US & Canada)").strftime('%l:%M %p') %> alert updates for MTA Metro-North Travel, going <%= @alert.direction %>, arriving at <%= @alert.station.stop_name %>.   
 	</p>
 	<table>
 		<tr>
