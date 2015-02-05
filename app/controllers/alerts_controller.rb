@@ -1,12 +1,14 @@
 class AlertsController < ApplicationController
   skip_before_action :verify_authenticity_token
+
   def create
     @alert = Alert.new(
       email_address: params["email_address"],
       direction: params["direction"],
       station_id: params["stop"].to_i,
-      time: Time.parse(params["time"])
+      time: Time.parse(params["time"]),
     )
+    @alert.add_unsubscribe_hash
     if @alert.save
       render json: @alert.attributes
     else
