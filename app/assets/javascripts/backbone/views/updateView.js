@@ -7,7 +7,7 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.listenTo(this.collection, 'reset', this.renderUpdates);
 	},
 	renderUpdates: function() {
-		this.$('modal').removeAttr('hidden')
+		$('modal').toggle('hidden')
 
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
@@ -34,7 +34,7 @@ App.Views.UpdateView = Backbone.View.extend({
 	sendRequest: function(event) {
 		this.$(".update-listing").remove()
 		this.direction = event.target.id
-		this.collection.fetchStationUpdates(this.station, this.direction);
+		this.collection.fetchStationUpdates(App.stations.findWhere({stop_id: this.station}).id, this.direction);
 	},
 	exitModal: function() {
 		$('modal').toggle('hidden');

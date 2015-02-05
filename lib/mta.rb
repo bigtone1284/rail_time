@@ -95,7 +95,7 @@ module MTA
 		update_array.map do |update|
 			{
 				train_id: update[:train_id],
-				etd: update[:train_time].partition(/\d\d/).select(&:present?).join(":"),
+				etd: Time.parse(update[:train_time].partition(/\d\d/).select(&:present?).join(":")).strftime('%l:%M %p'),
 				scheduled_arrival: Time.at(update["departure"]["time"]).strftime('%l:%M %p'),
 				updated_arrival: Time.at(update["departure"]["time"] + update["departure"]["delay"]).strftime('%l:%M %p')
 			}
