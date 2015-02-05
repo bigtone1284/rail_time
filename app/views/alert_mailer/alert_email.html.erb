@@ -2,18 +2,39 @@
 <html lang="en">
 <head>
 	<meta content='text/html'; charset="UTF-8" http-equiv='Content-Type' />
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 </head>
 <body>
 	<h2> Greetings from RailTime,</h2>
 	<p>
-		Here are your alert updates for MTA Metro-North Travel:
+		Here are your <%= @alert.time %> alert updates for MTA Metro-North Travel, going <%= @alert.direction %>, arriving at <%= @alert.station.stop_name %>.   
 	</p>
-	<% @updates.each do |update| %>
-		<p><%= update[:train_id] %></p>
-		<p><%= update[:etd] %></p>
-		<p><%= update[:scheduled_arrival] %></p>
-		<p><%= update[:updated_arrival] %></p>
-	<% end %>
+	<table>
+		<tr>
+			<th>Train Number</th>
+			<th>ETD</th> 
+			<th>Scheduled Arrival</th>
+			<th>Updated Arrival</th>
+		</tr>
+		<% @updates.each do |update| %>
+		<tr id='update-listing'>
+			<td><%= update[:train_id] %></td>
+			<td><%= update[:etd] %></td>
+			<td><%= update[:scheduled_arrival] %></td>
+			<td><%= update[:updated_arrival] %></td>
+		</tr>
+		<% end %>
+	</table>
+	<p>
+		To unsubscribe from this alert, click <%= link_to "here", alert_path(@alert), method: :delete %>
+	</p>
+	<p>
+		To check current Metro-North updates and schedule a new alert, please visit <%= link_to "RailTime", root_path %>.
+	</p>
+
+	<p>
+		--Your RailTime Alert Manager.  
+	</p>
 	
 </body>
 </html>

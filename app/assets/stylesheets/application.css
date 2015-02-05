@@ -21,7 +21,8 @@ body {
 	font-family: Helvetica;
 	font-style: italic;
 	font-weight: bold;
-
+	margin: 0 auto;
+	margin-top: 2.5%;
 }
 
 #container {
@@ -29,7 +30,6 @@ body {
 	height: 90%;
 	width: 95%;
 	display: table;
-  margin: 0 auto;
   padding: 1em;
 }
 
