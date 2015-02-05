@@ -1,5 +1,5 @@
 class AlertsController < ApplicationController
-
+  skip_before_action :verify_authenticity_token
   def create
     @alert = Alert.new(
       email_address: params["email_address"],
