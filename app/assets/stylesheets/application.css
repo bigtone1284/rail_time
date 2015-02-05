@@ -159,6 +159,7 @@ td {
 	border-bottom: solid black;
 	overflow: auto;
 	float: left;
+	padding: 0% 2%;
 }
 
 #save-alert-click:hover {
@@ -169,6 +170,7 @@ td {
 	border-bottom: solid black;
 	overflow: auto;
 	float: right;
+	padding: 0% 2%;
 }
 
 #exit-modal:hover {
