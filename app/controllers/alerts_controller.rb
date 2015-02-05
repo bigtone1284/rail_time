@@ -14,6 +14,17 @@ class AlertsController < ApplicationController
     end
   end
 
+
+  def unsubscribe
+    if alert = Alert.find_by_unsubscribe_hash(params[:unsubscribe_hash])
+      alert.destroy
+      flash[:destroy] = "Unsubscribed. Feel free to schedule a new alert!"
+    end
+    flash[:destroy] = "Subcription Error.  Contact Admin."
+    redirect_to root_path
+  end
+
+
   def destroy
     @alert = alert.find(params[:id])
     @alert.destroy
@@ -24,7 +35,7 @@ class AlertsController < ApplicationController
   private
 
   def alert_params
-  	params.require(:alert).permit(:station_name, :direction, :time)
+  	params.require(:alert).permit(:station_name, :direction, :time, :unsubscribe_hash)
   end
 
 end

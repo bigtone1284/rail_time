@@ -5,13 +5,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <% if flash[:destroy] %>
-    <% content_for :head do %>
-        <script type="text/javascript">
-            document.observe('dom:loaded', function() {
-                alert("<%= flash[:destroy] %>");
-            });
-        </script>
     <% end %>
 <% end %>
 </head>
@@ -19,6 +12,9 @@
 	<div id='container'>
 		<h1>Rail-Time</h1>
 		<hr>
+		<% if flash[:destroy] %>
+    <div class="notice"><%= flash[:destroy] %></div>
+  <% end %>
 		<div id='station-list-view'>
 			<h2>1. Choose your rail line</h2>
 			<div id="line-names">
