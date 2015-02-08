@@ -27,7 +27,25 @@
 				<h3 class='direction-choice' id='south'>South</h3>
 			</div>
 			<modal hidden>
-				<table>
+				<div id="floatingBarsG" hidden>
+					<div class="blockG" id="rotateG_01">
+					</div>
+					<div class="blockG" id="rotateG_02">
+					</div>
+					<div class="blockG" id="rotateG_03">
+					</div>
+					<div class="blockG" id="rotateG_04">
+					</div>
+					<div class="blockG" id="rotateG_05">
+					</div>
+					<div class="blockG" id="rotateG_06">
+					</div>
+					<div class="blockG" id="rotateG_07">
+					</div>
+					<div class="blockG" id="rotateG_08">
+					</div>
+				</div>
+				<table hidden>
 					<tr id='station-table-header'></tr>
 					<tr>
 		    		<th>Train Number</th>
@@ -36,7 +54,7 @@
 		    		<th>Updated Arrival</th>
 		  		</tr>
 				</table>
-				<div id='save-alert'>
+				<div id='save-alert' hidden>
 					<form>
 						Save Time for Future Alerts!: <input type="time" name="usr_time" placeholder="hrs:mins">
 						Email: <input type="text" name='usremail' placeholder='you@example.com'><br>

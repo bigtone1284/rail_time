@@ -7,10 +7,11 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.listenTo(this.collection, 'reset', this.renderUpdates);
 	},
 	renderUpdates: function() {
-		$('modal').toggle('hidden')
-
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
+		$('#floatingBarsG').toggle('hidden');
+		$('table').toggle('hidden');
+		$('#save-alert').toggle('hidden');
 	},
 	renderUpdate: function(update) {
 		var updateListing = new App.Views.UpdateListingView({ model: update });
@@ -35,9 +36,13 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.$(".update-listing").remove()
 		this.direction = event.target.id
 		this.collection.fetchStationUpdates(this.station, this.direction);
+		$('modal').toggle('hidden');
+		$('#floatingBarsG').toggle('hidden');
 	},
 	exitModal: function() {
 		$('modal').toggle('hidden');
+		$('table').toggle('hidden');
+		$('#save-alert').toggle('hidden');
 	},
 	saveAlert: function() {
 		var stop = App.stations.findWhere({stop_id: this.station}).id;
@@ -55,7 +60,7 @@ App.Views.UpdateView = Backbone.View.extend({
 		  data: newAlert,
 		  success: function(data) {
 		  	alert("Saved!");
-		  	$('modal').toggle('hidden');
+		  	exitModal();
 		  },
 		  error: function(data) {
 		  	alert("fail");
