@@ -78,13 +78,28 @@ module MTA
 	end
 
 	def self.formatter(update_array)
-		update_array.map do |update|
-			{
-				train_id: update[:train_id],
-				etd: Time.parse(update[:train_time].partition(/\d\d/).select(&:present?).join(":")).strftime('%l:%M %p'),
-				scheduled_arrival: Time.at(update["departure"]["time"]).in_time_zone("Eastern Time (US & Canada)").strftime('%l:%M %p'),
-				updated_arrival: Time.at(update["departure"]["time"] + update["departure"]["delay"]).in_time_zone("Eastern Time (US & Canada)").strftime('%l:%M %p')
-			}
+		if update_array.length == 0
+			return update_array = [{
+				train_id: "No Trains at this Time",
+				etd: "",
+				scheduled_arrival: "",
+				updated_arrival: ""
+			}]
+		else
+			return update_array.map do |update|
+				{
+					train_id: update[:train_id],
+					etd: Time.parse(update[:train_time].partition(/\d\d/).select(&:present?).join(":")).strftime('%l:%M %p'),
+					scheduled_arrival: Time.at(update["departure"]["time"]).in_time_zone("Eastern Time (US & Canada)").strftime('%l:%M %p'),
+					updated_arrival: Time.at(update["departure"]["time"] + update["departure"]["delay"]).in_time_zone("Eastern Time (US & Canada)").strftime('%l:%M %p')
+				}
+			end
 		end
 	end
 end
+
+
+
+
+
+
