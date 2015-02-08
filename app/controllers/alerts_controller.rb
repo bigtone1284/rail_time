@@ -19,8 +19,9 @@ class AlertsController < ApplicationController
     if alert = Alert.find_by_unsubscribe_hash(params[:unsubscribe_hash])
       alert.destroy
       flash[:destroy] = "Unsubscribed. Feel free to schedule a new alert!"
+    else
+      flash[:destroy] = "Subcription Error.  Contact Admin."
     end
-    flash[:destroy] = "Subcription Error.  Contact Admin."
     redirect_to root_path
   end
 
