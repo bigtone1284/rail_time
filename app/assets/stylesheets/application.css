@@ -91,19 +91,19 @@ body {
 	transform: scale(1.1);
 }
 
-#station-dropdown.hudson .station-name {
+.hudson .station-name {
 	color: #009B3A;
 	border-bottom: solid;
 	border-color: #009B3A;
 }
 
-#station-dropdown.harlem .station-name {
+.harlem .station-name {
 	color: #0039A6;
 	border-bottom: solid;
 	border-color: #0039A6;
 }
 
-#station-dropdown.new-haven .station-name {
+.new-haven .station-name {
 	color: #EE0034;
 	border-bottom: solid;
 	border-color: #EE0034;
@@ -175,6 +175,18 @@ td {
 
 #exit-modal:hover {
 	transform: scale(1.1);
+}
+
+.station-name.clicked {
+	color: gold;
+}
+
+.station-name.clicked {
+	color: gold;
+}
+
+.direction-choice.clicked {
+	color: gold;
 }
 
 #floatingBarsG{
