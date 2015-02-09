@@ -28,13 +28,17 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	chooseStation: function(event) {
 		this.station = event.target.value;
+		$('.station-name.clicked').toggleClass('clicked');
+		$(event.target).toggleClass('clicked');
 		$("#choose-direction").remove();
 		$("<h2 id='choose-direction'>3. Choose Direction</h2>").insertAfter("h2:last")
 		$('#direction').removeAttr('hidden');
 	},
 	sendRequest: function(event) {
-		this.$(".update-listing").remove()
-		this.direction = event.target.id
+		this.$(".update-listing").remove();
+		this.direction = event.target.id;
+		$('.direction-choice.clicked').toggleClass('clicked');
+		$(event.target).toggleClass('clicked');
 		this.collection.fetchStationUpdates(this.station, this.direction);
 		$('modal').toggle('hidden');
 		$('#floatingBarsG').toggle('hidden');
