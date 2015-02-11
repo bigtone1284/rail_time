@@ -10,7 +10,7 @@ namespace :send_alerts do
 	end
 
 	desc "send all the alerts from the last 10 minutes."
-	task: :send_alerts_ten => :environment do
+	task :send_alerts_ten => :environment do
 		time = Time.now.utc.strftime("%H%M")[0..-2]
 		Alert.all.each do |alert|
 			if alert.time.strftime("%H%M")[0..-2] == time
