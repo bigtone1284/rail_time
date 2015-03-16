@@ -19,9 +19,10 @@ App.Views.StationDropDownView = Backbone.View.extend({
 		'click .line' : 'chooseLine'
 	},
 	chooseLine: function(event) {
-		var line = event.target.id;
-		this.collection.fetchByLineName(line);
+		if (event !== undefined) { this.line = event.target.id };
+		this.collection.fetchByLineName(this.line);
 		$("#station-dropdown").removeClass();
-		$("#station-dropdown").addClass(line);
+		$("#station-dropdown").addClass(this.line);
+		App.router.navigate(this.line);
 	}
 });

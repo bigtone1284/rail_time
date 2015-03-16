@@ -60,6 +60,8 @@ gem 'actionmailer', '~> 4.1.7'
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'nokogiri', '1.6.5'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

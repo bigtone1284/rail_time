@@ -29,11 +29,9 @@ var App = {
 	Views: {}, 
 	Routers: {},
 	initialize: function() {
+		this.router = new this.Routers.Router();
+		Backbone.history.start();
 		console.log('did it †werks¿')
-		this.stations = new App.Collections.Stations();
-		this.stationDropDownView = new App.Views.StationDropDownView({ collection: this.stations });
-		this.updates = new App.Collections.Updates();
-		this.updatesView = new App.Views.UpdateView({ collection: this.updates }); 
 	}
 };
 

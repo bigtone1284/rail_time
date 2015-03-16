@@ -6,8 +6,5 @@ App.Views.UpdateListingView = Backbone.View.extend({
 	},
 	render: function() {
     this.$el.html(this.template(this.model.toJSON()));
-  },
-  events: {
-
-  }  
+  } 
 });

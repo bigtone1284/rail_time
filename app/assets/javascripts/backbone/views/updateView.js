@@ -18,7 +18,8 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.$("table tbody").append(updateListing.$el.children());
 	},
 	renderTableHeader: function() {
-		this.$('#station-table-header').text("Arrivals for " + App.stations.where({stop_id: this.station})[0].get("stop_name") + " going " + this.direction.charAt(0).toUpperCase() + this.direction.slice(1))
+		this.$('#station-table-header').text(
+			"Arrivals for " + App.stations.where({stop_id: this.station})[0].get("stop_name") + " going " + this.direction.charAt(0).toUpperCase() + this.direction.slice(1))
 	},
 	events: {
 		'click .station-name': 'chooseStation',
@@ -27,12 +28,18 @@ App.Views.UpdateView = Backbone.View.extend({
 		'click #exit-modal': 'exitModal'
 	},
 	chooseStation: function(event) {
-		this.station = event.target.value;
+		fix the router
+		if (event !== undefined) {this.station = event.target.value};
 		$('.station-name.clicked').toggleClass('clicked');
 		$(event.target).toggleClass('clicked');
 		$("#choose-direction").remove();
 		$("<h2 id='choose-direction'>3. Choose Direction</h2>").insertAfter("h2:last")
 		$('#direction').removeAttr('hidden');
+		App.router.navigate([
+			App.stationDropDownView.line,
+			this.station
+			].join('/')
+		)
 	},
 	sendRequest: function(event) {
 		this.$(".update-listing").remove();
@@ -42,6 +49,11 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.collection.fetchStationUpdates(this.station, this.direction);
 		$('modal').toggle('hidden');
 		$('#floatingBarsG').toggle('hidden');
+		App.router.navigate([
+			App.stationDropDownView.line,
+			this.station,
+			this.direction
+		].join('/'));
 	},
 	exitModal: function() {
 		$('modal').toggle('hidden');
