@@ -28,7 +28,6 @@ App.Views.UpdateView = Backbone.View.extend({
 		'click #exit-modal': 'exitModal'
 	},
 	chooseStation: function(event) {
-		fix the router
 		if (event !== undefined) {this.station = event.target.value};
 		$('.station-name.clicked').toggleClass('clicked');
 		$(event.target).toggleClass('clicked');

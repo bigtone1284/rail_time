@@ -2,9 +2,13 @@ App.Routers.Router = Backbone.Router.extend({
 
 	initialize: function() {
 		App.stations = new App.Collections.Stations();
-		App.stationDropDownView = new App.Views.StationDropDownView({ collection: App.stations });
+		App.stationDropDownView = new App.Views.StationDropDownView({
+			collection: App.stations
+		});
 		App.updates = new App.Collections.Updates();
-		App.updatesView = new App.Views.UpdateView({ collection: App.updates }); 
+		App.updatesView = new App.Views.UpdateView({
+			collection: App.updates 
+		}); 
 	},
 	routes: {
 		'': 														'index',
@@ -18,8 +22,7 @@ App.Routers.Router = Backbone.Router.extend({
 	},
 	station: function(line, stationID) {
 		this.line(line);
-		App.updatesView.station = stationID;
-		App.updatesView.chooseStation();
+		$( '.station-name[value=' + stationID + ']' ).addClass('clicked');
 	}
 
 })
