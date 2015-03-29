@@ -17,12 +17,29 @@ App.Routers.Router = Backbone.Router.extend({
 		':line/:stationID/:direction':  'direction'
 	},
 	line: function(line) {
+		debugger
+		$('modal').attr('hidden');
+		$('#direction').attr('hidden');
 		App.stationDropDownView.line = line;
 		App.stationDropDownView.chooseLine();
 	},
 	station: function(line, stationID) {
 		this.line(line);
-		$( '.station-name[value=' + stationID + ']' ).addClass('clicked');
+		setTimeout(function() {
+			$('.clicked').removeClass('clicked');
+			var station = $( '.station-name[value=' + stationID + ']' )
+			station.addClass('clicked');
+			$('#direction').removeAttr('hidden');
+		}, 65);
+	},
+	direction: function(line, stationID, direction) {
+		this.station(line, stationID);
+		setTimeout(function() {
+			$('.direction-choice').removeClass('clicked');
+			App.updatesView.direction = direction;
+			App.updatesView.station = stationID;
+			App.updatesView.sendRequest();
+		}, 80);
 	}
 
 })

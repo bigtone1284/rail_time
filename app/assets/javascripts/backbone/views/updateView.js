@@ -10,8 +10,8 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
 		$('#floatingBarsG').toggle('hidden');
-		$('table').toggle('hidden');
-		$('#save-alert').toggle('hidden');
+		$('table').removeAttr('hidden');
+		$('#save-alert').removeAttr('hidden');
 	},
 	renderUpdate: function(update) {
 		var updateListing = new App.Views.UpdateListingView({ model: update });
@@ -41,12 +41,14 @@ App.Views.UpdateView = Backbone.View.extend({
 		)
 	},
 	sendRequest: function(event) {
+		if (event !== undefined) {
+			this.direction = event.target.id;
+			$(event.target).toggleClass('clicked');
+		}
 		this.$(".update-listing").remove();
-		this.direction = event.target.id;
 		$('.direction-choice.clicked').toggleClass('clicked');
-		$(event.target).toggleClass('clicked');
 		this.collection.fetchStationUpdates(this.station, this.direction);
-		$('modal').toggle('hidden');
+		$('modal').removeAttr('hidden');
 		$('#floatingBarsG').toggle('hidden');
 		App.router.navigate([
 			App.stationDropDownView.line,
@@ -55,9 +57,10 @@ App.Views.UpdateView = Backbone.View.extend({
 		].join('/'));
 	},
 	exitModal: function() {
-		$('modal').toggle('hidden');
-		$('table').toggle('hidden');
-		$('#save-alert').toggle('hidden');
+		$('modal').attr('hidden');
+		$('#floatingBarsG').toggle('hidden');
+		$('table').attr('hidden');
+		$('#save-alert').attr('hidden');
 	},
 	saveAlert: function() {
 		var stop = App.stations.findWhere({stop_id: this.station}).id;

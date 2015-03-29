@@ -23,8 +23,8 @@ App.Views.StationDropDownView = Backbone.View.extend({
 		this.collection.fetchByLineName(this.line);
 		$("#station-dropdown").removeClass();
 		$("#station-dropdown").addClass(this.line);
-		onlly navigate if the url is from index.  
-
-		App.router.navigate(this.line);
+		if (Backbone.history.getFragment().indexOf(this.line) === -1) {
+			App.router.navigate(this.line);
+		}
 	}
 });
