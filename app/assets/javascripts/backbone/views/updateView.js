@@ -48,7 +48,7 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.$(".update-listing").remove();
 		$('.direction-choice.clicked').toggleClass('clicked');
 		this.collection.fetchStationUpdates(this.station, this.direction);
-		$('modal').removeAttr('hidden');
+		$('modal').toggle('hidden');
 		$('#floatingBarsG').toggle('hidden');
 		App.router.navigate([
 			App.stationDropDownView.line,
