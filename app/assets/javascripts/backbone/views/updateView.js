@@ -57,10 +57,10 @@ App.Views.UpdateView = Backbone.View.extend({
 		].join('/'));
 	},
 	exitModal: function() {
-		$('modal').attr('hidden');
+		$('modal').toggle('hidden');
 		$('#floatingBarsG').toggle('hidden');
-		$('table').attr('hidden');
-		$('#save-alert').attr('hidden');
+		$('table').toggle('hidden');
+		$('#save-alert').toggle('hidden');
 	},
 	saveAlert: function() {
 		var stop = App.stations.findWhere({stop_id: this.station}).id;
