@@ -28,7 +28,7 @@ App.Routers.Router = Backbone.Router.extend({
 			$('.clicked').removeClass('clicked');
 			var station = $( '.station-name[value=' + stationID + ']' )
 			station.addClass('clicked');
-			$('#direction').removeAttr('hidden');
+			$('#direction').toggle('hidden');
 		}, 65);
 	},
 	direction: function(line, stationID, direction) {

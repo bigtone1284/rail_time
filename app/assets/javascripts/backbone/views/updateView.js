@@ -10,8 +10,8 @@ App.Views.UpdateView = Backbone.View.extend({
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
 		$('#floatingBarsG').toggle('hidden');
-		$('table').removeAttr('hidden');
-		$('#save-alert').removeAttr('hidden');
+		$('table').toggle('hidden');
+		$('#save-alert').toggle('hidden');
 	},
 	renderUpdate: function(update) {
 		var updateListing = new App.Views.UpdateListingView({ model: update });
@@ -58,7 +58,7 @@ App.Views.UpdateView = Backbone.View.extend({
 	},
 	exitModal: function() {
 		$('modal').toggle('hidden');
-		$('#floatingBarsG').toggle('hidden');
+		// $('#floatingBarsG').toggle('hidden');
 		$('table').toggle('hidden');
 		$('#save-alert').toggle('hidden');
 	},
