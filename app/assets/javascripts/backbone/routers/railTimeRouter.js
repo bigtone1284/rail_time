@@ -17,8 +17,6 @@ App.Routers.Router = Backbone.Router.extend({
 		':line/:stationID/:direction':  'direction'
 	},
 	line: function(line) {
-		$('modal').attr('hidden');
-		$('#direction').attr('hidden');
 		App.stationDropDownView.line = line;
 		App.stationDropDownView.chooseLine();
 	},
