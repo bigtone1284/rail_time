@@ -10,16 +10,19 @@ App.Routers.Router = Backbone.Router.extend({
 			collection: App.updates 
 		}); 
 	},
+	
 	routes: {
 		'': 														'index',
 		':line': 												'line',
 		':line/:stationID': 						'station',
 		':line/:stationID/:direction':  'direction'
 	},
+
 	line: function(line) {
 		App.stationDropDownView.line = line;
 		App.stationDropDownView.chooseLine();
 	},
+
 	station: function(line, stationID) {
 		this.line(line);
 		setTimeout(function() {
@@ -29,6 +32,7 @@ App.Routers.Router = Backbone.Router.extend({
 			$('#direction').toggle('hidden');
 		}, 65);
 	},
+
 	direction: function(line, stationID, direction) {
 		this.station(line, stationID);
 		setTimeout(function() {

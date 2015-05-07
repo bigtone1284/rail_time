@@ -79,14 +79,14 @@ module MTA
 
 	def self.formatter(update_array)
 		if update_array.length == 0
-			return update_array = [{
+			update_array = [{
 				train_id: "No Trains at this Time",
 				etd: "",
 				scheduled_arrival: "",
 				updated_arrival: ""
 			}]
 		else
-			return update_array.map do |update|
+			update_array.map do |update|
 				{
 					train_id: update[:train_id],
 					etd: Time.parse(update[:train_time].partition(/\d\d/).select(&:present?).join(":")).strftime('%l:%M %p'),
@@ -96,10 +96,5 @@ module MTA
 			end
 		end
 	end
+
 end
-
-
-
-
-
-

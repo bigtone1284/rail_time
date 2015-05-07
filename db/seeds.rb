@@ -1,13 +1,9 @@
 Station.destroy_all
 
-
 csv_text = File.read('db/stops.csv')
 csv = CSV.parse(csv_text, :headers => true)
-set = csv.map do |row|
-  row
-end
 
-set.each do |station|
+csv.each do |station|
 	Station.create({
 		stop_id: station["stop_id"],
 		stop_name: station["stop_name"],
@@ -16,4 +12,3 @@ set.each do |station|
 		stop_url: station["stop_url"]
 	})
 end
-

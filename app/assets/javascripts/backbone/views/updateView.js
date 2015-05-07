@@ -1,11 +1,23 @@
 App.Views.UpdateView = Backbone.View.extend({
+	
 	el: '#station-list-view',
+	
 	station: undefined,
+	
 	direction: undefined,
+	
+	events: {
+		'click .station-name': 'chooseStation',
+		'click .direction-choice': 'sendRequest',
+		'click #save-alert-click': 'saveAlert',
+		'click #exit-modal': 'exitModal'
+	},
+	
 	initialize: function() {
 		console.log("fillling it up the drop down");
 		this.listenTo(this.collection, 'reset', this.renderUpdates);
 	},
+
 	renderUpdates: function() {
 		this.renderTableHeader();
 		this.collection.each(this.renderUpdate, this);
@@ -13,20 +25,18 @@ App.Views.UpdateView = Backbone.View.extend({
 		$('table').toggle('hidden');
 		$('#save-alert').toggle('hidden');
 	},
+
 	renderUpdate: function(update) {
 		var updateListing = new App.Views.UpdateListingView({ model: update });
 		this.$("table tbody").append(updateListing.$el.children());
 	},
+
 	renderTableHeader: function() {
 		this.$('#station-table-header').text(
 			"Arrivals for " + App.stations.where({stop_id: this.station})[0].get("stop_name") + " going " + this.direction.charAt(0).toUpperCase() + this.direction.slice(1))
 	},
-	events: {
-		'click .station-name': 'chooseStation',
-		'click .direction-choice': 'sendRequest',
-		'click #save-alert-click': 'saveAlert',
-		'click #exit-modal': 'exitModal'
-	},
+	
+	
 	chooseStation: function(event) {
 		if (event !== undefined) {this.station = event.target.value};
 		$('.station-name.clicked').toggleClass('clicked');
@@ -40,6 +50,7 @@ App.Views.UpdateView = Backbone.View.extend({
 			].join('/')
 		)
 	},
+	
 	sendRequest: function(event) {
 		if (event !== undefined) {
 			this.direction = event.target.id;
@@ -56,12 +67,14 @@ App.Views.UpdateView = Backbone.View.extend({
 			this.direction
 		].join('/'));
 	},
+	
 	exitModal: function() {
 		$('modal').toggle('hidden');
 		// $('#floatingBarsG').toggle('hidden');
 		$('table').toggle('hidden');
 		$('#save-alert').toggle('hidden');
 	},
+	
 	saveAlert: function() {
 		var stop = App.stations.findWhere({stop_id: this.station}).id;
 		var email_address = $('input[type=text]').val();
@@ -86,4 +99,5 @@ App.Views.UpdateView = Backbone.View.extend({
 		  }
 		})
 	}
+
 });
