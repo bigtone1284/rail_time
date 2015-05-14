@@ -63,21 +63,21 @@ body {
 #station-list-view {
 	display: inline-block;
 	float: left;
-	width: 75%;
+	width: 100%;
 }
 
 #station-dropdown {
 	display: inline-block;
 	float: left;
-	margin: 2.5% 5%;
-	padding: 0.25em;
+	margin: 2.5%;
+	padding: 0.1em;
 	max-height: 300px;
 	overflow: scroll;
 }
 
 #line-names {
 	float: left;
-	margin-right: 10%;
+	margin-right: 2.5%;
 }
 
 .line {
@@ -120,16 +120,19 @@ body {
 	transform: scale(1.05);
 }
 
+#direction {
+	float: left;
+}
+
 .direction-choice {
 	background-color: white;
 	border-bottom: solid;
 	border-color: black;
-	border-width: 0.25em;
+	border-width: 0.50em;
 	border-radius: 0.1em;
-	width: 25%;
 	float: left;
-	margin-top: 0.2em;
-	padding: 0.2em;
+	margin: 0.2em;
+	padding: 1em;
 }
 
 .direction-choice:hover {

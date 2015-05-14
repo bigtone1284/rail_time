@@ -38,7 +38,7 @@ App.Views.UpdateView = Backbone.View.extend({
 	
 	
 	chooseStation: function(event) {
-		if (event !== undefined) {this.station = event.target.value};
+		if (event !== undefined) {this.station = $(event.target).attr('value')}
 		$('.station-name.clicked').toggleClass('clicked');
 		$(event.target).toggleClass('clicked');
 		$("#choose-direction").remove();
